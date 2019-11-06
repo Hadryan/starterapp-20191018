@@ -3,7 +3,11 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.15
-    working_directory: ../services/webapp
+    branches:
+      only:
+        - master
+        - spike/circleci
+    working_directory: /services/webapp
     steps:
       - checkout
       # Download and cache dependencies
