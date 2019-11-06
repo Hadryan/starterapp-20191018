@@ -7,7 +7,7 @@ jobs:
       only:
         - master
         - spike/circleci
-    working_directory: ~/services/webapp
+    #working_directory: ~/services/webapp
     steps:
       - checkout
       # Download and cache dependencies
@@ -21,7 +21,16 @@ jobs:
       #     paths:
       #       - node_modules
       #     key: v1-dependencies-{{ checksum "package.json" }}
-      - run: yarn install
+      - run:
+        name: Install Node Packages
+        command: yarn install
+        path: services/webapp
       # - run: yarn lint
-      - run: yarn test
-      - run: yarn build
+      - run:
+        name: Run test
+        command: yarn test
+        path: services/webapp
+      - run:
+        name: Run build
+        command: yarn build
+        path: services/webapp
