@@ -28,7 +28,7 @@ jobs:
             # - run: yarn lint
             - run:
                 name: Run test
-                command: yarn test
+                command: yarn test --passWithNoTests
                 path: services/webapp
             - run:
                 name: Run build
