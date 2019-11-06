@@ -7,7 +7,7 @@ jobs:
             only:
               - master
               - spike/circleci
-        #working_directory: ~/services/webapp
+        working_directory: ~/webapp
         steps:
             - checkout
             # Download and cache dependencies
