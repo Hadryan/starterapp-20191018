@@ -24,7 +24,7 @@ jobs:
             # Save dependencies to cache
             - save_cache:
                 paths:
-                  - node_modules
+                  - services/webapp/node_modules
                 key: v1-dependencies-{{ checksum "package.json" }}
             - run:
                 name: Check eslint
