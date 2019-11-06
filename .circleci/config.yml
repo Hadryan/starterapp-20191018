@@ -1,36 +1,36 @@
 version: 2
 jobs:
-  build:
-    docker:
-      - image: circleci/node:10.15
-    branches:
-      only:
-        - master
-        - spike/circleci
-    #working_directory: ~/services/webapp
-    steps:
-      - checkout
-      # Download and cache dependencies
-      # - restore_cache:
-      #     keys:
-      #       - v1-dependencies-{{ checksum "package.json" }}
-      #       # fallback to using the latest cache if no exact match is found
-      #       - v1-dependencies-
-      # # Save dependencies to cache
-      # - save_cache:
-      #     paths:
-      #       - node_modules
-      #     key: v1-dependencies-{{ checksum "package.json" }}
-      - run:
-        name: Install Node Packages
-        command: yarn install
-        path: services/webapp
-      # - run: yarn lint
-      - run:
-        name: Run test
-        command: yarn test
-        path: services/webapp
-      - run:
-        name: Run build
-        command: yarn build
-        path: services/webapp
+    build:
+        docker:
+            - image: circleci/node:10.15
+        branches:
+            only:
+              - master
+              - spike/circleci
+        #working_directory: ~/services/webapp
+        steps:
+            - checkout
+            # Download and cache dependencies
+            # - restore_cache:
+            #     keys:
+            #       - v1-dependencies-{{ checksum "package.json" }}
+            #       # fallback to using the latest cache if no exact match is found
+            #       - v1-dependencies-
+            # # Save dependencies to cache
+            # - save_cache:
+            #     paths:
+            #       - node_modules
+            #     key: v1-dependencies-{{ checksum "package.json" }}
+            - run:
+                name: Install Node Packages
+                command: yarn install
+                path: services/webapp
+            # - run: yarn lint
+            - run:
+                name: Run test
+                command: yarn test
+                path: services/webapp
+            - run:
+                name: Run build
+                command: yarn build
+                path: services/webapp
