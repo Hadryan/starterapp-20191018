@@ -1,6 +1,6 @@
 version: 2
 jobs:
-    webapp:
+    build:
         docker:
             - image: circleci/node:10.15
         branches:
