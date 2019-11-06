@@ -10,21 +10,22 @@ jobs:
         working_directory: ~/webapp
         steps:
             - checkout
-            Download and cache dependencies
+            # Download and cache dependencies
             - restore_cache:
                 keys:
                   - v1-dependencies-{{ checksum "package.json" }}
                   # fallback to using the latest cache if no exact match is found
                   - v1-dependencies-
+            # install dependencies
+            - run:
+                name: Install Node Packages
+                command: yarn install
+                path: services/webapp
             # Save dependencies to cache
             - save_cache:
                 paths:
                   - node_modules
                 key: v1-dependencies-{{ checksum "package.json" }}
-            - run:
-                name: Install Node Packages
-                command: yarn install
-                path: services/webapp
             - run:
                 name: Check eslint
                 command: yarn lint
